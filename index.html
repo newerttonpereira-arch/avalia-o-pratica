@@ -1,34 +1,114 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Card Interativo - Tema Dinâmico</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prática: Tema Claro e Escuro</title>
+  
+  <!-- CSS (Estilização) -->
+  <style>
+    /* Variáveis do Tema Claro (Padrão) */
+    :root {
+      --cor-fundo: #f4f4f9;
+      --cor-texto: #1a1a1a;
+      --cor-card: #ffffff;
+      --cor-botao: #4a90e2;
+      --cor-texto-botao: #ffffff;
+      --sombra: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Variáveis do Tema Escuro */
+    body.tema-escuro {
+      --cor-fundo: #121212;
+      --cor-texto: #f4f4f9;
+      --cor-card: #1e1e1e;
+      --cor-botao: #bb86fc;
+      --cor-texto-botao: #000000;
+      --sombra: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Estilos Gerais */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--cor-fundo);
+      color: var(--cor-texto);
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Container Principal */
+    .card {
+      background-color: var(--cor-card);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: var(--sombra);
+      text-align: center;
+      max-width: 350px;
+      width: 100%;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    /* Estilo da Imagem */
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    /* Estilo do Botão */
+    .btn-tema {
+      background-color: var(--cor-botao);
+      color: var(--cor-texto-botao);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: opacity 0.2s, background-color 0.3s;
+    }
+
+    .btn-tema:hover {
+      opacity: 0.9;
+    }
+  </style>
 </head>
-<body class="tema-escuro">
+<body>
 
-    <div class="container">
-        <button id="btn-tema" aria-label="Alternar Tema">
-            <span id="icone-tema">🌙</span>
-            <span id="texto-tema">Modo Escuro</span>
-        </button>
+  <!-- HTML (Estrutura) -->
+  <div class="card">
+    <img src="https://picsum.photos/400/300" alt="Imagem de Exemplo">
+    <h2>Alternador de Tema</h2>
+    <p>Clique no botão abaixo para alternar entre o modo claro e o modo escuro.</p>
+    <button id="btnAlternar" class="btn-tema">Mudar para Tema Escuro</button>
+  </div>
 
-        <main class="card">
-            <div class="imagem-wrapper">
-                <img src="https://picsum.photos/600/400" alt="Imagem de paisagem urbana" class="card-img">
-            </div>
-            
-            <div class="card-conteudo">
-                <span class="badge">Tecnologia</span>
-                <h2>Explorando a Web Moderna</h2>
-                <p>Aprender HTML, CSS e JavaScript é a base para construir experiências incríveis e interativas para os usuários.</p>
-                
-                <a href="#" class="btn-acao">Saiba Mais</a>
-            </div>
-        </main>
-    </div>
+  <!-- JavaScript (Lógica) -->
+  <script>
+    // Seleciona o botão e o corpo da página
+    const botao = document.getElementById('btnAlternar');
+    const corpo = document.body;
 
-    <script src="script.js"></script>
+    // Adiciona o evento de clique ao botão
+    botao.addEventListener('click', () => {
+      // Alterna a classe 'tema-escuro' no body
+      corpo.classList.toggle('tema-escuro');
+
+      // Atualiza o texto do botão de acordo com o tema ativo
+      if (corpo.classList.contains('tema-escuro')) {
+        botao.textContent = 'Mudar para Tema Claro';
+      } else {
+        botao.textContent = 'Mudar para Tema Escuro';
+      }
+    });
+  </script>
+
 </body>
 </html>
