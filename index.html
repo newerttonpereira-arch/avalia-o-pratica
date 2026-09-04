@@ -3,108 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sport Club Corinthians Paulista</title>
+    <title>Card Interativo - Tema Dinâmico</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="tema-claro">
+<body class="tema-escuro">
 
-    <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/pt/b/b4/Corinthians_simbolo.png" alt="Escudo do Corinthians" class="escudo">
-        
-        <h1>Sport Club Corinthians Paulista</h1>
-        <p>Fundado em 1º de setembro de 1910, o Timão é um dos clubes mais vitoriosos e populares do futebol brasileiro.</p>
+    <div class="container">
+        <button id="btn-tema" aria-label="Alternar Tema">
+            <span id="icone-tema">🌙</span>
+            <span id="texto-tema">Modo Escuro</span>
+        </button>
 
-        <div class="botoes">
-            <button id="btn-claro">Tema Claro</button>
-            <button id="btn-escuro">Tema Escuro</button>
-        </div>
+        <main class="card">
+            <div class="imagem-wrapper">
+                <img src="https://picsum.photos/600/400" alt="Imagem de paisagem urbana" class="card-img">
+            </div>
+            
+            <div class="card-conteudo">
+                <span class="badge">Tecnologia</span>
+                <h2>Explorando a Web Moderna</h2>
+                <p>Aprender HTML, CSS e JavaScript é a base para construir experiências incríveis e interativas para os usuários.</p>
+                
+                <a href="#" class="btn-acao">Saiba Mais</a>
+            </div>
+        </main>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+/* Variáveis para controle rápido de temas */
+:root {
+    --bg-gradiente-1: #0f172a;
+    --bg-gradiente-2: #1e293b;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --texto-principal: #f8fafc;
+    --texto-secundario: #94a3b8;
+    --destaque: #38bdf8;
+    --sombra: rgba(0, 0, 0, 0.5);
+}
+
+body.tema-claro {
+    --bg-gradiente-1: #e2e8f0;
+    --bg-gradiente-2: #f8fafc;
+    --card-bg: rgba(255, 255, 255, 0.8);
+    --card-border: rgba(0, 0, 0, 0.1);
+    --texto-principal: #0f172a;
+    --texto-secundario: #475569;
+    --destaque: #0284c7;
+    --sombra: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg-gradiente-1), var(--bg-gradiente-2));
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* Regras de Temas */
-body.tema-claro {
-    background-color: #f4f4f4;
-    color: #111111;
-}
-
-body.tema-escuro {
-    background-color: #121212;
-    color: #ffffff;
-}
-
-/* Card Principal */
-.card {
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 2px solid #888888;
-    padding: 30px;
-    border-radius: 12px;
-    text-align: center;
-    max-width: 350px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.escudo {
-    width: 120px;
-    height: auto;
-    margin-bottom: 15px;
-}
-
-/* Estilização dos Botões */
-.botoes {
-    margin-top: 20px;
+.container {
     display: flex;
-    gap: 10px;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    padding: 20px;
 }
 
-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
+/* Botão de Tema */
+#btn-tema {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--texto-principal);
+    padding: 10px 18px;
+    border-radius: 30px;
     cursor: pointer;
-    font-weight: bold;
-    transition: transform 0.1s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px var(--sombra);
+    transition: transform 0.2s ease, background 0.3s ease;
 }
 
-button:hover {
+#btn-tema:hover {
+    transform: translateY(-2px);
+}
+
+/* Card Estilizado */
+.card {
+    width: 100%;
+    max-width: 380px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px var(--sombra);
+    transition: background 0.4s ease, border 0.4s ease, transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.imagem-wrapper {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.card:hover .card-img {
     transform: scale(1.05);
 }
 
-#btn-claro {
-    background-color: #ffffff;
-    color: #000000;
-    border: 1px solid #000;
+.card-conteudo {
+    padding: 24px;
 }
 
-#btn-escuro {
-    background-color: #000000;
+.badge {
+    display: inline-block;
+    background: var(--destaque);
     color: #ffffff;
-    border: 1px solid #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
 }
+
+.card-conteudo h2 {
+    color: var(--texto-principal);
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.card-conteudo p {
+    color: var(--texto-secundario);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.btn-acao {
+    display: block;
+    text-align: center;
+    background: var(--destaque);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+}
+
+.btn-acao:hover {
+    opacity: 0.9;
+}
+const btnTema = document.getElementById('btn-tema');
+const iconeTema = document.getElementById('icone-tema');
+const textoTema = document.getElementById('texto-tema');
 const body = document.body;
-const btnClaro = document.getElementById('btn-claro');
-const btnEscuro = document.getElementById('btn-escuro');
 
-// Evento para ativar o tema claro
-btnClaro.addEventListener('click', () => {
-    body.classList.remove('tema-escuro');
-    body.classList.add('tema-claro');
+// Verifica se o usuário já salvou uma preferência anterior
+const temaSalvo = localStorage.getItem('tema');
+
+if (temaSalvo) {
+    body.className = temaSalvo;
+    atualizarBotao(temaSalvo === 'tema-claro');
+}
+
+btnTema.addEventListener('click', () => {
+    const eModoClaro = body.classList.toggle('tema-claro');
+    body.classList.toggle('tema-escuro', !eModoClaro);
+
+    // Salva a preferência no navegador
+    localStorage.setItem('tema', eModoClaro ? 'tema-claro' : 'tema-escuro');
+
+    atualizarBotao(eModoClaro);
 });
 
-// Evento para ativar o tema escuro
-btnEscuro.addEventListener('click', () => {
-    body.classList.remove('tema-claro');
-    body.classList.add('tema-escuro');
-});
+function atualizarBotao(eModoClaro) {
+    if (eModoClaro) {
+        iconeTema.textContent = '☀️';
+        textoTema.textContent = 'Modo Claro';
+    } else {
+        iconeTema.textContent = '🌙';
+        textoTema.textContent = 'Modo Escuro';
+    }
+}
