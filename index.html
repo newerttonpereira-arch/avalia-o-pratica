@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport Club Corinthians Paulista</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="tema-claro">
+
+    <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/pt/b/b4/Corinthians_simbolo.png" alt="Escudo do Corinthians" class="escudo">
+        
+        <h1>Sport Club Corinthians Paulista</h1>
+        <p>Fundado em 1º de setembro de 1910, o Timão é um dos clubes mais vitoriosos e populares do futebol brasileiro.</p>
+
+        <div class="botoes">
+            <button id="btn-claro">Tema Claro</button>
+            <button id="btn-escuro">Tema Escuro</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Regras de Temas */
+body.tema-claro {
+    background-color: #f4f4f4;
+    color: #111111;
+}
+
+body.tema-escuro {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* Card Principal */
+.card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid #888888;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 350px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.escudo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* Estilização dos Botões */
+.botoes {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.1s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+#btn-claro {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000;
+}
+
+#btn-escuro {
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #fff;
+}
+const body = document.body;
+const btnClaro = document.getElementById('btn-claro');
+const btnEscuro = document.getElementById('btn-escuro');
+
+// Evento para ativar o tema claro
+btnClaro.addEventListener('click', () => {
+    body.classList.remove('tema-escuro');
+    body.classList.add('tema-claro');
+});
+
+// Evento para ativar o tema escuro
+btnEscuro.addEventListener('click', () => {
+    body.classList.remove('tema-claro');
+    body.classList.add('tema-escuro');
+});
