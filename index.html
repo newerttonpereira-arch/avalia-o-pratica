@@ -3,33 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prática: Tema Claro e Escuro</title>
+  <title>Sport Club Corinthians Paulista</title>
   
-  <!-- CSS (Estilização) -->
   <style>
-    /* Variáveis do Tema Claro (Padrão) */
+    /* Variáveis do Tema Claro */
     :root {
-      --cor-fundo: #f4f4f9;
-      --cor-texto: #1a1a1a;
+      --cor-fundo: #f0f0f0;
+      --cor-texto: #111111;
       --cor-card: #ffffff;
-      --cor-botao: #4a90e2;
+      --cor-borda: #cc0000;
+      --cor-botao: #111111;
       --cor-texto-botao: #ffffff;
-      --sombra: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --cor-link: #cc0000;
+      --sombra: 0 4px 15px rgba(0, 0, 0, 0.15);
     }
 
     /* Variáveis do Tema Escuro */
     body.tema-escuro {
-      --cor-fundo: #121212;
-      --cor-texto: #f4f4f9;
-      --cor-card: #1e1e1e;
-      --cor-botao: #bb86fc;
+      --cor-fundo: #0a0a0a;
+      --cor-texto: #f0f0f0;
+      --cor-card: #181818;
+      --cor-borda: #c5a059; /* Tom dourado */
+      --cor-botao: #ffffff;
       --cor-texto-botao: #000000;
-      --sombra: 0 4px 12px rgba(0, 0, 0, 0.5);
+      --cor-link: #c5a059;
+      --sombra: 0 4px 15px rgba(0, 0, 0, 0.7);
     }
 
-    /* Estilos Gerais */
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Arial', sans-serif;
       background-color: var(--cor-fundo);
       color: var(--cor-texto);
       margin: 0;
@@ -40,68 +42,77 @@
       transition: background-color 0.3s, color 0.3s;
     }
 
-    /* Container Principal */
     .card {
       background-color: var(--cor-card);
       padding: 2rem;
       border-radius: 12px;
+      border-top: 5px solid var(--cor-borda);
       box-shadow: var(--sombra);
       text-align: center;
       max-width: 350px;
       width: 100%;
-      transition: background-color 0.3s, box-shadow 0.3s;
+      transition: background-color 0.3s, border-color 0.3s;
     }
 
-    /* Estilo da Imagem */
     .card img {
       width: 100%;
-      height: 200px;
+      height: 220px;
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 1rem;
     }
 
-    /* Estilo do Botão */
+    .card h2 {
+      margin-top: 0;
+      letter-spacing: 1px;
+    }
+
+    .card a {
+      color: var(--cor-link);
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
     .btn-tema {
       background-color: var(--cor-botao);
       color: var(--cor-texto-botao);
       border: none;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
+      padding: 0.8rem 1.5rem;
+      font-size: 0.95rem;
       font-weight: bold;
       border-radius: 6px;
       cursor: pointer;
-      margin-top: 1rem;
-      transition: opacity 0.2s, background-color 0.3s;
+      margin-top: 1.5rem;
+      width: 100%;
+      transition: background-color 0.3s, color 0.3s, transform 0.1s;
     }
 
-    .btn-tema:hover {
-      opacity: 0.9;
+    .btn-tema:active {
+      transform: scale(0.98);
     }
   </style>
 </head>
 <body>
 
-  <!-- HTML (Estrutura) -->
   <div class="card">
-    <img src="https://picsum.photos/400/300" alt="Imagem de Exemplo">
-    <h2>Alternador de Tema</h2>
-    <p>Clique no botão abaixo para alternar entre o modo claro e o modo escuro.</p>
+    <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQVtzQbTQlgx47UUMDABa-6cdOge2MHhrb1VfAqQPMRS5pcTCxrKdJ2S2rOlYUCvCqmWhgmzzHQqWe6s1Q" alt="Escudo do Corinthians">
+    <h2>Vai Corinthians!</h2>
+    <p>Acompanhe todas as notícias no <a href="https://www.corinthians.com.br" target="_blank" rel="noopener noreferrer">site oficial do Timão</a>.</p>
     <button id="btnAlternar" class="btn-tema">Mudar para Tema Escuro</button>
   </div>
 
-  <!-- JavaScript (Lógica) -->
   <script>
-    // Seleciona o botão e o corpo da página
     const botao = document.getElementById('btnAlternar');
     const corpo = document.body;
 
-    // Adiciona o evento de clique ao botão
     botao.addEventListener('click', () => {
-      // Alterna a classe 'tema-escuro' no body
       corpo.classList.toggle('tema-escuro');
 
-      // Atualiza o texto do botão de acordo com o tema ativo
       if (corpo.classList.contains('tema-escuro')) {
         botao.textContent = 'Mudar para Tema Claro';
       } else {
